@@ -16,9 +16,17 @@ class MainApp extends StatelessWidget {
       title: "Novalume",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: KTextStyles.fontFamily,
+        textTheme: Typography.material2021().white.apply(
+          fontFamily: KTextStyles.fontFamily,
+          bodyColor: KColors.whiteTextColor,
+          displayColor: KColors.whiteTextColor,
+        ),
         scaffoldBackgroundColor: KColors.scaffoldColor,
-        appBarTheme: AppBarTheme(backgroundColor: KColors.appbarColor),
+        appBarTheme: AppBarTheme(
+          backgroundColor: KColors.appbarColor,
+          foregroundColor: KColors.whiteTextColor,
+          titleTextStyle: KTextStyles.regular28,
+        ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           type: BottomNavigationBarType.fixed,
           backgroundColor: KColors.navbarColor,

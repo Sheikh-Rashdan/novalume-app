@@ -14,4 +14,12 @@ class KColors {
   ];
 
   static const Color whiteTextColor = Colors.white;
+  static const Color blackTextColor = Color.fromARGB(255, 37, 37, 37);
+  static const Color redTextColor = Color.fromARGB(255, 211, 75, 75);
+  static const Color greenTextColor = Color.fromARGB(255, 95, 178, 79);
+
+  static const Color redStatusColor = Color.fromARGB(255, 197, 69, 69);
+  static const Color greenStatusColor = Color.fromARGB(255, 109, 177, 96);
+
+  static const Color greyBgColor = Color.fromARGB(255, 217, 217, 217);
 }
