@@ -1,2 +1,3 @@
-# novalume-app
-Mobile app for Novalume
+# novalume_app
+
+A new Flutter project.
