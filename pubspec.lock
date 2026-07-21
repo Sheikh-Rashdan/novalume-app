@@ -54,6 +54,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bubble_chart:
+    dependency: "direct main"
+    description:
+      name: flutter_bubble_chart
+      sha256: "941fbd451ea91845dc2b9df595727929a2167d834dc6cd22758218b4709951f9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
