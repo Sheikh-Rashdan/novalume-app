@@ -19,18 +19,41 @@ class MainApp extends StatelessWidget {
         appBarTheme: AppBarTheme(backgroundColor: KColors.appbarColor),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color.fromARGB(255, 108, 63, 46),
-          selectedItemColor: Color.fromARGB(255, 244, 241, 231),
-          unselectedItemColor: Color.fromARGB(255, 170, 115, 92),
+          backgroundColor: KColors.navbarColor,
+          selectedItemColor: KColors.navbarUnselectedColor,
+          unselectedItemColor: KColors.navbarSelectedColor,
           selectedLabelStyle: TextStyle(fontSize: 12),
           selectedIconTheme: IconThemeData(size: 28),
           showUnselectedLabels: true,
         ),
         iconButtonTheme: IconButtonThemeData(
-          style: IconButton.styleFrom(foregroundColor: Colors.white),
+          style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      home: HomePage(),
+      home: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bar_chart_rounded),
+              label: "Meter",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard_rounded),
+              label: "Dashboard",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_rounded),
+              label: "Profile",
+            ),
+          ],
+        ),
+        body: HomePage(),
+      ),
     );
   }
 }
@@ -43,10 +66,12 @@ class PageView extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
-          backgroundColor: Color.fromARGB(255, 179, 111, 83),
           title: Text(
             "NOVALUME",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: KColors.whiteTextColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           actions: [
             IconButton(
@@ -68,10 +93,7 @@ class PageView extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Color.fromARGB(255, 179, 111, 83),
-                    Color.fromARGB(255, 108, 63, 46),
-                  ],
+                  colors: KColors.primaryContainerGradient,
                   begin: AlignmentGeometry.topCenter,
                   end: AlignmentGeometry.bottomCenter,
                 ),
