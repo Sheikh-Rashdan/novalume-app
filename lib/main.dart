@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MainApp extends StatelessWidget {
       title: "Novalume",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: KTextStyles.fontFamily,
         scaffoldBackgroundColor: KColors.scaffoldColor,
         appBarTheme: AppBarTheme(backgroundColor: KColors.appbarColor),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -58,8 +60,15 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class PageView extends StatelessWidget {
-  const PageView({super.key});
+class SliverPageColumn extends StatelessWidget {
+  const SliverPageColumn({
+    super.key,
+    required this.appBartitle,
+    required this.children,
+  });
+
+  final String appBartitle;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -67,45 +76,41 @@ class PageView extends StatelessWidget {
       slivers: [
         SliverAppBar(
           title: Text(
-            "NOVALUME",
+            appBartitle,
             style: TextStyle(
               color: KColors.whiteTextColor,
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add_circle_outline_rounded),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_rounded),
-            ),
-          ],
+          actions: [],
           actionsPadding: const EdgeInsets.symmetric(
             horizontal: 10,
             vertical: 10,
           ),
         ),
-        SliverList(
-          delegate: SliverChildListDelegate([
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: KColors.primaryContainerGradient,
-                  begin: AlignmentGeometry.topCenter,
-                  end: AlignmentGeometry.bottomCenter,
-                ),
-                borderRadius: BorderRadiusDirectional.vertical(
-                  bottom: Radius.circular(24),
-                ),
-              ),
-              height: 200,
-            ),
-          ]),
-        ),
+        SliverList(delegate: SliverChildListDelegate(children)),
       ],
+    );
+  }
+}
+
+class PrimaryContainer extends StatelessWidget {
+  const PrimaryContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: KColors.primaryContainerGradient,
+          begin: AlignmentGeometry.topCenter,
+          end: AlignmentGeometry.bottomCenter,
+        ),
+        borderRadius: BorderRadiusDirectional.vertical(
+          bottom: Radius.circular(24),
+        ),
+      ),
+      padding: const EdgeInsets.only(left: 10, right: 10),
     );
   }
 }
