@@ -45,20 +45,115 @@ class MeterPage extends StatelessWidget {
             ],
           ),
         ),
-        Column(
-          children: [
-            ListTile(
-              leading: Icon(Icons.energy_savings_leaf_rounded),
-              title: Text(
-                "Energy",
-                style: KTextStyles.medium16.copyWith(
-                  color: KColors.blackTextColor,
-                ),
+        SizedBox(height: 10),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(color: Colors.black.withAlpha(64)),
+              BoxShadow(
+                color: KColors.secondaryColorLight,
+                offset: Offset(0, 2),
+                blurRadius: 7,
               ),
-              trailing: Icon(Icons.chevron_right_rounded),
-            ),
-          ],
+            ],
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(10),
+          child: Text(
+            "123",
+            style: KTextStyles.bold28.copyWith(color: KColors.blackTextColor),
+          ),
         ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SegmentedButton(
+            segments: [
+              ButtonSegment(value: "day", label: Text("Day")),
+              ButtonSegment(value: "week", label: Text("Week")),
+              ButtonSegment(value: "month", label: Text("Month")),
+            ],
+            selected: {"day"},
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              ListOption(
+                text: "Energy",
+                iconData: Icons.energy_savings_leaf_rounded,
+                onTap: () {},
+              ),
+              ListOption(
+                text: "Savings",
+                iconData: Icons.currency_rupee_rounded,
+                onTap: () {},
+              ),
+              ListOption(
+                text: "Predictions",
+                iconData: Icons.auto_graph_rounded,
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ListOption extends StatelessWidget {
+  const ListOption({
+    super.key,
+    required this.text,
+    required this.iconData,
+    required this.onTap,
+  });
+
+  final String text;
+  final IconData iconData;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Icon(iconData, size: 22, color: KColors.blackTextColor),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsetsGeometry.symmetric(
+                      horizontal: 20,
+                      vertical: 6,
+                    ),
+                    child: Text(
+                      text,
+                      style: KTextStyles.medium16.copyWith(
+                        color: KColors.blackTextColor,
+                      ),
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  size: 22,
+                  color: KColors.blackTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
+          ),
+        ),
+        Divider(thickness: 2, color: KColors.dividerColor),
       ],
     );
   }

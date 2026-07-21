@@ -8,10 +8,16 @@ class KColors {
   static const Color navbarUnselectedColor = Color.fromARGB(255, 244, 241, 231);
   static const Color navbarSelectedColor = Color.fromARGB(255, 170, 115, 92);
 
+  static const Color primaryColorLight = appbarColor;
+  static const Color primaryColorDark = navbarColor;
   static const List<Color> primaryContainerGradient = [
-    appbarColor,
-    navbarColor,
+    primaryColorLight,
+    primaryColorDark,
   ];
+  static const Color secondaryColorLight = Color.fromARGB(255, 235, 221, 208);
+  static const Color secondaryColorDark = Color.fromARGB(255, 151, 123, 123);
+
+  static const Color dividerColor = Color.fromARGB(50, 0, 0, 0);
 
   static const Color whiteTextColor = Colors.white;
   static const Color blackTextColor = Color.fromARGB(255, 37, 37, 37);

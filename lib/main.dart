@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
+import 'package:novalume_app/pages/meter_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -62,7 +63,7 @@ class MainApp extends StatelessWidget {
             ),
           ],
         ),
-        body: HomePage(),
+        body: MeterPage(),
       ),
     );
   }
