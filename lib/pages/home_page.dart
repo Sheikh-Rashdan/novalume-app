@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/text_styles.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,10 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "NOVALUME",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: NovalumeAppBarTitle(),
         centerTitle: false,
         actions: [
           IconButton(
@@ -69,10 +67,7 @@ class HomePage extends StatelessWidget {
                       ),
                       title: Text(
                         "List Tile $index",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: KTextStyles.regular16,
                       ),
                       tileColor: KColors.neutralBgColor,
                     ),
@@ -82,6 +77,30 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NovalumeAppBarTitle extends StatelessWidget {
+  const NovalumeAppBarTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(text: "N"),
+          WidgetSpan(
+            child: Padding(
+              padding: const EdgeInsetsGeometry.only(right: 4),
+              child: Icon(Icons.lightbulb_rounded),
+            ),
+            alignment: PlaceholderAlignment.middle,
+          ),
+          TextSpan(text: "VALUME"),
+        ],
+        style: KTextStyles.light28.copyWith(letterSpacing: 5),
       ),
     );
   }

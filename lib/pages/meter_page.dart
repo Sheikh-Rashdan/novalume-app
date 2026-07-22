@@ -61,7 +61,7 @@ class MeterPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 20),
           padding: const EdgeInsets.all(10),
           child: Text(
-            "123",
+            "Graph Here",
             style: KTextStyles.bold28.copyWith(color: KColors.blackTextColor),
           ),
         ),
@@ -76,7 +76,7 @@ class MeterPage extends StatelessWidget {
                 value: "day",
                 label: Container(
                   decoration: ShapeDecoration(
-                    color: Color(0xFFD4C3BD),
+                    color: KColors.secondaryColorMedium,
                     shape: StadiumBorder(),
                   ),
                   padding: const EdgeInsets.symmetric(

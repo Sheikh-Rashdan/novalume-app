@@ -34,7 +34,7 @@ class MainApp extends StatelessWidget {
           backgroundColor: KColors.navbarColor,
           selectedItemColor: KColors.navbarUnselectedColor,
           unselectedItemColor: KColors.navbarSelectedColor,
-          selectedLabelStyle: TextStyle(fontSize: 12),
+          selectedLabelStyle: KTextStyles.medium12,
           selectedIconTheme: IconThemeData(size: 28),
           showUnselectedLabels: true,
         ),
@@ -75,7 +75,7 @@ class MainApp extends StatelessWidget {
             ),
           ],
         ),
-        body: MeterPage(),
+        body: HomePage(),
       ),
     );
   }
