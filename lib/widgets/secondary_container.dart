@@ -19,7 +19,7 @@ class SecondaryContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
-          BoxShadow(color: Colors.black.withAlpha(64)),
+          BoxShadow(color: KColors.defaultShadowColor),
           BoxShadow(
             color: KColors.secondaryColorLight,
             offset: Offset(0, 2),

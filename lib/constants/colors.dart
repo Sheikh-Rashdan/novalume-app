@@ -20,6 +20,8 @@ class KColors {
   static const Color secondaryColorDark = Color(0xFF977B7B);
 
   static const Color dividerColor = Color(0x30000000);
+  static const Color defaultShadowColor = Color(0x40000000);
+  static const Color defaultHighlightColor = Color(0x40FFFFFF);
 
   static const Color whiteTextColor = Color(0xFFFFFFFF);
   static const Color blackTextColor = Color(0xFF252525);
@@ -32,10 +34,10 @@ class KColors {
 
   static const Color neutralBgColor = Color(0xFFD9D9D9);
   static const List<Color> brownBubbles = [
-    Color(0xFF614A41),
-    Color(0xFF9A583E),
-    Color(0xFFD18D73),
+    Color(0xFFCFB1A8),
     Color(0xFFAF8A7E),
-    Color(0xFFF4F1E7),
+    Color(0xFFAC7867),
+    Color(0xFF9A583E),
+    Color(0xFF614A41),
   ];
 }
