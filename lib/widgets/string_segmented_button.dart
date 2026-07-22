@@ -58,7 +58,7 @@ class ButtonSegmentSelectedChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: ShapeDecoration(
-        color: KColors.secondaryColorMedium,
+        color: KColors.brownActiveColor,
         shape: StadiumBorder(),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
