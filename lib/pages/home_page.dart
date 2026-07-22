@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
+import 'package:novalume_app/widgets/secondary_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,56 +28,111 @@ class HomePage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
+          SizedBox(
             height: 360,
-            margin: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 3, color: Colors.grey),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: BubbleChart(
-              names: [
-                'Refrigerator',
-                'Air Conditioner',
-                'Microwave',
-                'Geyser',
-                'Washing Machine',
-              ],
-              values: [2.5, 5, 7.5, 10, 12.5],
-              colors: KColors.brownBubbles,
-              showBorder: false,
-              showValues: false,
+            child: SecondaryContainer(
+              padding: EdgeInsets.zero,
+              margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+              child: BubbleChart(
+                names: [
+                  'Refrigerator',
+                  'Air Conditioner',
+                  'Microwave',
+                  'Geyser',
+                  'Washing Machine',
+                ],
+                values: [2.5, 5, 7.5, 10, 12.5],
+                colors: KColors.brownBubbles,
+                showBorder: false,
+                showValues: false,
+              ),
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 12,
-              itemBuilder: (context, index) {
-                return Dismissible(
-                  key: Key(index.toString()),
-                  child: Card(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 5,
-                    ),
-                    child: ListTile(
-                      shape: RoundedSuperellipseBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      title: Text(
-                        "List Tile $index",
-                        style: KTextStyles.regular16,
-                      ),
-                      tileColor: KColors.neutralBgColor,
-                    ),
-                  ),
-                );
-              },
+            child: ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [Colors.transparent, Colors.black],
+                stops: [0, 0.1],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ).createShader(bounds),
+              blendMode: BlendMode.dstIn,
+              child: ShaderMask(
+                shaderCallback: (bounds) => LinearGradient(
+                  colors: [
+                    KColors.secondaryColorLight,
+                    KColors.secondaryColorDark,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ).createShader(bounds),
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
+                    return RecommendationTile(
+                      index: index,
+                      itemCount: 12,
+                      text: "List Tile $index",
+                    );
+                  },
+                ),
+              ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class RecommendationTile extends StatelessWidget {
+  const RecommendationTile({
+    super.key,
+    required this.index,
+    required this.itemCount,
+    required this.text,
+  });
+
+  final int index;
+  final int itemCount;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final EdgeInsets margin;
+    if (index == 0) {
+      margin = const EdgeInsets.only(top: 25, bottom: 5, left: 12, right: 12);
+    } else if (index == itemCount - 1) {
+      margin = const EdgeInsets.only(top: 5, bottom: 25, left: 12, right: 12);
+    } else {
+      margin = const EdgeInsets.symmetric(horizontal: 12, vertical: 5);
+    }
+
+    return Dismissible(
+      key: Key(text + index.toString()),
+      child: Container(
+        margin: margin,
+        decoration: ShapeDecoration(
+          shape: RoundedSuperellipseBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          shadows: [
+            BoxShadow(
+              color: KColors.defaultShadowColor,
+              offset: Offset(0, 4),
+              blurRadius: 4,
+            ),
+            BoxShadow(color: KColors.neutralBgColor),
+            BoxShadow(
+              color: KColors.defaultHighlightColor,
+              offset: Offset(0, -9),
+              blurRadius: 4,
+            ),
+          ],
+        ),
+        child: ListTile(title: Text(text, style: KTextStyles.regular16)),
       ),
     );
   }
