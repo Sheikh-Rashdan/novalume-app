@@ -8,6 +8,12 @@ class RecommendationProvider with ChangeNotifier {
     addRecommendationWithParameters(text: "Turn off the geyser");
     addRecommendationWithParameters(text: "Switch AC to Eco Mode");
     addRecommendationWithParameters(text: "Dim bedroom lights at night time");
+    addRecommendationWithParameters(text: "Turn off the geyser");
+    addRecommendationWithParameters(text: "Switch AC to Eco Mode");
+    addRecommendationWithParameters(text: "Dim bedroom lights at night time");
+    addRecommendationWithParameters(text: "Turn off the geyser");
+    addRecommendationWithParameters(text: "Switch AC to Eco Mode");
+    addRecommendationWithParameters(text: "Dim bedroom lights at night time");
   }
 
   List<Recommendation> get recommendationList => _recommendationList;

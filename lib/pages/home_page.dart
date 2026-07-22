@@ -33,7 +33,20 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [ApplianceBubbleWidget(), RecommendationListView()],
+        children: [
+          ApplianceBubbleWidget(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Recommendations",
+              style: KTextStyles.medium22.copyWith(
+                color: KColors.blackTextColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          RecommendationListView(),
+        ],
       ),
     );
   }
@@ -82,8 +95,6 @@ class RecommendationListView extends StatelessWidget {
                   itemCount: recommendationList.length,
                   itemBuilder: (context, index) {
                     return RecommendationTile(
-                      index: index,
-                      itemCount: recommendationList.length,
                       recommendation: recommendationList[index],
                       onDismissed: dismissRecommendationTile,
                     );
@@ -94,10 +105,9 @@ class RecommendationListView extends StatelessWidget {
           )
         : Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.all(12),
             child: Text(
-              "No Recommendations",
-              style: KTextStyles.medium22.copyWith(
+              "No Recommendations Available",
+              style: KTextStyles.light16.copyWith(
                 color: KColors.blackTextColor,
               ),
             ),
@@ -108,35 +118,22 @@ class RecommendationListView extends StatelessWidget {
 class RecommendationTile extends StatelessWidget {
   const RecommendationTile({
     super.key,
-    required this.index,
-    required this.itemCount,
     required this.recommendation,
     required this.onDismissed,
   });
 
-  final int index;
-  final int itemCount;
   final Recommendation recommendation;
   final Function(BuildContext, String) onDismissed;
 
   @override
   Widget build(BuildContext context) {
-    final EdgeInsets margin;
-    if (index == 0) {
-      margin = const EdgeInsets.only(top: 25, bottom: 5, left: 12, right: 12);
-    } else if (index == itemCount - 1) {
-      margin = const EdgeInsets.only(top: 5, bottom: 25, left: 12, right: 12);
-    } else {
-      margin = const EdgeInsets.symmetric(horizontal: 12, vertical: 5);
-    }
-
     return Dismissible(
       onDismissed: (DismissDirection direction) {
         onDismissed(context, recommendation.id);
       },
       key: Key(recommendation.id),
       child: Container(
-        margin: margin,
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
         decoration: ShapeDecoration(
           shape: RoundedSuperellipseBorder(
             borderRadius: BorderRadius.circular(20),
