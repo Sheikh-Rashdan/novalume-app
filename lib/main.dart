@@ -63,7 +63,7 @@ class MainApp extends StatelessWidget {
             ),
           ],
         ),
-        body: MeterPage(),
+        body: HomePage(),
       ),
     );
   }

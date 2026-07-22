@@ -62,6 +62,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  flutter_bubble_chart_plus:
+    dependency: "direct main"
+    description:
+      name: flutter_bubble_chart_plus
+      sha256: "966d208064651483410483764ee5f6b300c91cbf9c8e74e127a03f0666985b37"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:

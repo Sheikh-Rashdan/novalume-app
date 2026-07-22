@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bubble_chart/flutter_bubble_chart.dart';
+import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -43,9 +43,16 @@ class HomePage extends StatelessWidget {
                 'Geyser',
                 'Washing Machine',
               ],
-              values: [5.2, 8.8, 2.1, 8.5, 15.2],
-              positiveColor: Colors.brown,
+              values: [2.5, 5, 7.5, 10, 12.5],
+              colors: [
+                Colors.brown.shade100,
+                Colors.brown.shade200,
+                Colors.brown.shade300,
+                Colors.brown.shade400,
+                Colors.brown.shade500,
+              ],
               showBorder: false,
+              showValues: false,
             ),
           ),
           Expanded(
