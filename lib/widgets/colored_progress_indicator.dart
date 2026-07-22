@@ -32,7 +32,7 @@ class ColoredProgressIndicator extends StatelessWidget {
         children: [
           Container(
             decoration: ShapeDecoration(
-              color: KColors.greyBgColor,
+              color: KColors.neutralBgColor,
               shape: StadiumBorder(),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
+import 'package:novalume_app/constants/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -44,13 +45,7 @@ class HomePage extends StatelessWidget {
                 'Washing Machine',
               ],
               values: [2.5, 5, 7.5, 10, 12.5],
-              colors: [
-                Colors.brown.shade100,
-                Colors.brown.shade200,
-                Colors.brown.shade300,
-                Colors.brown.shade400,
-                Colors.brown.shade500,
-              ],
+              colors: KColors.BrownBubbles,
               showBorder: false,
               showValues: false,
             ),
@@ -79,7 +74,7 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      tileColor: Colors.blueGrey,
+                      tileColor: KColors.neutralBgColor,
                     ),
                   ),
                 );
