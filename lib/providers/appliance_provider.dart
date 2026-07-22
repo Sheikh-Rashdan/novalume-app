@@ -29,4 +29,12 @@ class ApplianceProvider with ChangeNotifier {
     _applianceList.clear();
     notifyListeners();
   }
+
+  List<Appliance> get topAppliances {
+    final int n = 5;
+    final List<Appliance> sortedAppliances = [..._applianceList]
+      ..sort((a, b) => a.powerKwh.compareTo(b.powerKwh));
+    if (sortedAppliances.length <= n) return sortedAppliances;
+    return sortedAppliances.getRange(0, n).toList();
+  }
 }
