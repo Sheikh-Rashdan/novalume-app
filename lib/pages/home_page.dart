@@ -185,6 +185,7 @@ class ApplianceBubbleWidget extends StatelessWidget {
               .toList(),
           showBorder: false,
           showValues: false,
+          animationDuration: const Duration(seconds: 1),
         ),
       ),
     );
