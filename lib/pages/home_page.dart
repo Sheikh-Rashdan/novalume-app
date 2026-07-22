@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
@@ -105,12 +106,16 @@ class RecommendationListView extends StatelessWidget {
           )
         : Container(
             alignment: Alignment.center,
-            child: Text(
-              "No Recommendations Available",
-              style: KTextStyles.light16.copyWith(
-                color: KColors.blackTextColor,
-              ),
-            ),
+            child:
+                Text(
+                      "No Recommendations Available",
+                      style: KTextStyles.light16.copyWith(
+                        color: KColors.blackTextColor,
+                      ),
+                    )
+                    .animate()
+                    .slideY(begin: -1, end: 0)
+                    .fadeIn(duration: 300.ms, curve: Curves.easeInOut),
           );
   }
 }
