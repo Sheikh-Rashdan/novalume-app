@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
       title: "Novalume",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: KColors.seedColor),
         textTheme: Typography.material2021().white.apply(
           fontFamily: KTextStyles.fontFamily,
           bodyColor: KColors.whiteTextColor,
@@ -36,6 +37,17 @@ class MainApp extends StatelessWidget {
           selectedLabelStyle: TextStyle(fontSize: 12),
           selectedIconTheme: IconThemeData(size: 28),
           showUnselectedLabels: true,
+        ),
+        segmentedButtonTheme: SegmentedButtonThemeData(
+          style: SegmentedButton.styleFrom(
+            backgroundColor: KColors.secondaryColorLight,
+            selectedBackgroundColor: KColors.secondaryColorLight,
+            foregroundColor: KColors.secondaryColorDark,
+            selectedForegroundColor: KColors.brownTextColor,
+            textStyle: KTextStyles.medium16,
+            side: BorderSide.none,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+          ),
         ),
         iconButtonTheme: IconButtonThemeData(
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
@@ -63,7 +75,7 @@ class MainApp extends StatelessWidget {
             ),
           ],
         ),
-        body: HomePage(),
+        body: MeterPage(),
       ),
     );
   }

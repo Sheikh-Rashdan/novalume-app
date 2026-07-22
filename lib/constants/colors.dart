@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KColors {
+  static const Color seedColor = Color(0xFF675941);
   static const Color scaffoldColor = Color(0xFFF4F1E7);
   static const Color appbarColor = Color(0xFFB36F53);
   static const Color navbarColor = Color(0xFF6C3F2E);
@@ -23,6 +24,7 @@ class KColors {
   static const Color blackTextColor = Color(0xFF252525);
   static const Color redTextColor = Color(0xFFD34B4B);
   static const Color greenTextColor = Color(0xFF5FB24F);
+  static const Color brownTextColor = Color(0xFF6C3F2E);
 
   static const Color redStatusColor = Color(0xFFC54545);
   static const Color greenStatusColor = Color(0xFF6DB160);

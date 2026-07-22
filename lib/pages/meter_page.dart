@@ -15,7 +15,6 @@ class MeterPage extends StatelessWidget {
       children: [
         PrimaryContainer(
           child: Column(
-            spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Current Usage", style: KTextStyles.light28),
@@ -33,6 +32,7 @@ class MeterPage extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 10),
               ColoredProgressIndicator(
                 fraction: 0.3,
                 colors: [
@@ -45,7 +45,7 @@ class MeterPage extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 16),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
@@ -68,9 +68,24 @@ class MeterPage extends StatelessWidget {
         SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SegmentedButton(
+          child: SegmentedButton<String>(
+            onSelectionChanged: (Set<String> value) {},
+            showSelectedIcon: false,
             segments: [
-              ButtonSegment(value: "day", label: Text("Day")),
+              ButtonSegment(
+                value: "day",
+                label: Container(
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFD4C3BD),
+                    shape: StadiumBorder(),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 4,
+                  ),
+                  child: Text("Day"),
+                ),
+              ),
               ButtonSegment(value: "week", label: Text("Week")),
               ButtonSegment(value: "month", label: Text("Month")),
             ],
