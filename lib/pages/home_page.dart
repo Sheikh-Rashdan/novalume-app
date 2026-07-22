@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                 'Washing Machine',
               ],
               values: [2.5, 5, 7.5, 10, 12.5],
-              colors: KColors.BrownBubbles,
+              colors: KColors.brownBubbles,
               showBorder: false,
               showValues: false,
             ),
