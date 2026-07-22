@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
@@ -131,7 +132,12 @@ class ListOption extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                Icon(iconData, size: 22, color: KColors.blackTextColor),
+                // Icon(iconData, size: 22, color: KColors.blackTextColor),
+                Icon(
+                  iconData,
+                  size: KIconStyles.default22,
+                  color: KColors.blackTextColor,
+                ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsetsGeometry.symmetric(
