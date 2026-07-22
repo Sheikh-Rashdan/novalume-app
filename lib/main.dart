@@ -4,12 +4,16 @@ import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
 import 'package:novalume_app/pages/meter_page.dart';
 import 'package:novalume_app/providers/appliance_provider.dart';
+import 'package:novalume_app/providers/recommendation_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ApplianceProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ApplianceProvider()),
+        ChangeNotifierProvider(create: (context) => RecommendationProvider()),
+      ],
       child: const MainApp(),
     ),
   );

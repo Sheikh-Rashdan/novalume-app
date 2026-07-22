@@ -6,6 +6,8 @@ import 'package:novalume_app/models/appliance.dart';
 class ApplianceProvider with ChangeNotifier {
   List<Appliance> _applianceList = [];
 
+  List<Appliance> get applianceList => _applianceList;
+
   void addAppliance(Appliance appliance) {
     _applianceList.add(appliance);
     notifyListeners();
