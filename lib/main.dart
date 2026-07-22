@@ -47,7 +47,7 @@ class MainApp extends StatelessWidget {
             splashFactory: NoSplash.splashFactory,
             textStyle: KTextStyles.medium16,
             side: BorderSide.none,
-            padding: const EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.only(top: 6, bottom: 8),
           ),
         ),
         iconButtonTheme: IconButtonThemeData(
