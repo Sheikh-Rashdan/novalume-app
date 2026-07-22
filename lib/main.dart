@@ -54,29 +54,35 @@ class MainApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 0,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart_rounded),
-              label: "Meter",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard_rounded),
-              label: "Dashboard",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_rounded),
-              label: "Profile",
-            ),
-          ],
-        ),
+        bottomNavigationBar: MainBottomNavigationBar(),
         body: HomePage(),
       ),
+    );
+  }
+}
+
+class MainBottomNavigationBar extends StatelessWidget {
+  const MainBottomNavigationBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: 0,
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.bar_chart_rounded),
+          label: "Meter",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dashboard_rounded),
+          label: "Dashboard",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_rounded),
+          label: "Profile",
+        ),
+      ],
     );
   }
 }
