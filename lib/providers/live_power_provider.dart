@@ -6,6 +6,7 @@ import 'package:novalume_app/models/live_power.dart';
 
 class LivePowerProvider with ChangeNotifier {
   List<LivePower> _livePowerList = [];
+  final int maximumElements = 50;
 
   LivePowerProvider() {
     for (int i = 0; i < 30; i++) {
@@ -14,6 +15,7 @@ class LivePowerProvider with ChangeNotifier {
         powerKwh: Random().nextDouble() + 0.5,
       );
     }
+    testProviderForLivePowerGraph();
   }
 
   List<FlSpot> get livePowerSpotList =>
@@ -21,6 +23,9 @@ class LivePowerProvider with ChangeNotifier {
 
   void addLivePower(LivePower livePower) {
     _livePowerList.add(livePower);
+    if (_livePowerList.length > maximumElements) {
+      _livePowerList.removeRange(0, _livePowerList.length - maximumElements);
+    }
     notifyListeners();
   }
 
@@ -31,8 +36,27 @@ class LivePowerProvider with ChangeNotifier {
     addLivePower(LivePower(timeMs: timeMs, powerKwh: powerKwh));
   }
 
-  void clearLivePower() {
+  void resetLivePower() {
     _livePowerList.clear();
     notifyListeners();
+  }
+
+  bool _runningTest = false;
+  Future<void> testProviderForLivePowerGraph() async {
+    await Future.delayed(Duration(seconds: 1));
+    resetLivePower();
+    if (!_runningTest) {
+      _runningTest = true;
+      testProviderForLivePowerGraphAddSpots();
+    }
+  }
+
+  Future<void> testProviderForLivePowerGraphAddSpots() async {
+    await Future.delayed(Duration(milliseconds: Random().nextInt(90) + 10));
+    addLivePowerWithParameters(
+      timeMs: _livePowerList.isNotEmpty ? (_livePowerList.last.timeMs + 1) : 0,
+      powerKwh: Random().nextDouble() + 0.5,
+    );
+    testProviderForLivePowerGraphAddSpots();
   }
 }
