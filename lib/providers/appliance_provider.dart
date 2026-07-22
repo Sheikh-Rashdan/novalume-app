@@ -61,6 +61,7 @@ class ApplianceProvider with ChangeNotifier {
     return sortedAppliances.getRange(0, n).toList();
   }
 
+  bool _runningTest = false;
   Future<void> testProviderForBubbleChart() async {
     await Future.delayed(Duration(seconds: 1));
     resetAppliances();
@@ -74,7 +75,10 @@ class ApplianceProvider with ChangeNotifier {
         ),
       ),
     );
-    testProviderForBubbleChartEditPower();
+    if (!_runningTest) {
+      _runningTest = true;
+      testProviderForBubbleChartEditPower();
+    }
   }
 
   Future<void> testProviderForBubbleChartEditPower() async {
