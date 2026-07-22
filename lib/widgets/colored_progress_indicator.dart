@@ -26,27 +26,33 @@ class ColoredProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      child: Stack(
-        children: [
-          Container(
-            decoration: ShapeDecoration(
-              color: KColors.neutralBgColor,
-              shape: StadiumBorder(),
-            ),
-          ),
-          FractionallySizedBox(
-            widthFactor: fraction,
-            heightFactor: 1,
-            child: Container(
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0, end: fraction),
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+      builder: (context, animatedFraction, child) => SizedBox(
+        height: height,
+        child: Stack(
+          children: [
+            Container(
               decoration: ShapeDecoration(
-                color: _getContainerColor(),
+                color: KColors.neutralBgColor,
                 shape: StadiumBorder(),
               ),
             ),
-          ),
-        ],
+            FractionallySizedBox(
+              widthFactor: animatedFraction,
+              heightFactor: 1,
+              child: AnimatedContainer(
+                duration: Duration(seconds: 1),
+                decoration: ShapeDecoration(
+                  color: _getContainerColor(),
+                  shape: StadiumBorder(),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
