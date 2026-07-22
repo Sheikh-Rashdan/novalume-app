@@ -11,8 +11,12 @@ class ApplianceProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addApplianceWithParameters(String name, double powerKwh) {
-    addAppliance(Appliance(name: name, powerKwh: powerKwh));
+  void addApplianceWithParameters({
+    String? id,
+    required String name,
+    required double powerKwh,
+  }) {
+    addAppliance(Appliance(id: id, name: name, powerKwh: powerKwh));
   }
 
   void removeAppliance(String applianceId) {
