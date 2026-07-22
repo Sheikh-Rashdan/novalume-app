@@ -3,6 +3,7 @@ import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
+import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
 
 class MeterPage extends StatelessWidget {
@@ -46,20 +47,7 @@ class MeterPage extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(color: Colors.black.withAlpha(64)),
-              BoxShadow(
-                color: KColors.secondaryColorLight,
-                offset: Offset(0, 2),
-                blurRadius: 7,
-              ),
-            ],
-          ),
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          padding: const EdgeInsets.all(10),
+        SecondaryContainer(
           child: Text(
             "Graph Here",
             style: KTextStyles.bold28.copyWith(color: KColors.blackTextColor),
