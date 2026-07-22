@@ -46,7 +46,7 @@ class MainApp extends StatelessWidget {
             selectedForegroundColor: KColors.brownTextColor,
             textStyle: KTextStyles.medium16,
             side: BorderSide.none,
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 12),
           ),
         ),
         iconButtonTheme: IconButtonThemeData(
