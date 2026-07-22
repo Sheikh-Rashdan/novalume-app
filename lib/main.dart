@@ -3,9 +3,16 @@ import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
 import 'package:novalume_app/pages/meter_page.dart';
+import 'package:novalume_app/providers/appliance_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplianceProvider(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

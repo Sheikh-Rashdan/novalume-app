@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
+import 'package:novalume_app/models/appliance.dart';
+import 'package:novalume_app/providers/appliance_provider.dart';
+import 'package:novalume_app/widgets/recommendation_tile.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,25 +32,15 @@ class HomePage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            height: 360,
-            child: SecondaryContainer(
-              padding: EdgeInsets.zero,
-              margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-              child: BubbleChart(
-                names: [
-                  'Refrigerator',
-                  'Air Conditioner',
-                  'Microwave',
-                  'Geyser',
-                  'Washing Machine',
-                ],
-                values: [2.5, 5, 7.5, 10, 12.5],
-                colors: KColors.brownBubbles,
-                showBorder: false,
-                showValues: false,
-              ),
-            ),
+          ApplianceBubbleWidget(),
+          TextButton(
+            onPressed: () {
+              context.read<ApplianceProvider>().addApplianceWithParameters(
+                "Rashdan",
+                1.2,
+              );
+            },
+            child: Text("add"),
           ),
           Expanded(
             child: ShaderMask(
@@ -87,52 +81,27 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class RecommendationTile extends StatelessWidget {
-  const RecommendationTile({
-    super.key,
-    required this.index,
-    required this.itemCount,
-    required this.text,
-  });
-
-  final int index;
-  final int itemCount;
-  final String text;
+class ApplianceBubbleWidget extends StatelessWidget {
+  const ApplianceBubbleWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final EdgeInsets margin;
-    if (index == 0) {
-      margin = const EdgeInsets.only(top: 25, bottom: 5, left: 12, right: 12);
-    } else if (index == itemCount - 1) {
-      margin = const EdgeInsets.only(top: 5, bottom: 25, left: 12, right: 12);
-    } else {
-      margin = const EdgeInsets.symmetric(horizontal: 12, vertical: 5);
-    }
-
-    return Dismissible(
-      key: Key(text + index.toString()),
-      child: Container(
-        margin: margin,
-        decoration: ShapeDecoration(
-          shape: RoundedSuperellipseBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          shadows: [
-            BoxShadow(
-              color: KColors.defaultShadowColor,
-              offset: Offset(0, 4),
-              blurRadius: 4,
-            ),
-            BoxShadow(color: KColors.neutralBgColor),
-            BoxShadow(
-              color: KColors.defaultHighlightColor,
-              offset: Offset(0, -9),
-              blurRadius: 4,
-            ),
-          ],
+    ApplianceProvider applianceProvider = context.watch<ApplianceProvider>();
+    List<Appliance> applianceList = applianceProvider.topAppliances;
+    return SizedBox(
+      height: 360,
+      child: SecondaryContainer(
+        padding: EdgeInsets.zero,
+        margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 5),
+        child: BubbleChart(
+          names: applianceList.map((appliance) => appliance.name).toList(),
+          values: applianceList.map((appliance) => appliance.powerKwh).toList(),
+          colors: KColors.brownBubbles
+              .getRange(0, applianceList.length)
+              .toList(),
+          showBorder: false,
+          showValues: false,
         ),
-        child: ListTile(title: Text(text, style: KTextStyles.regular16)),
       ),
     );
   }
