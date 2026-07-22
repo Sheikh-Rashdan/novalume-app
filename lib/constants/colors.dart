@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class KColors {
-  static const Color scaffoldColor = Color.fromARGB(255, 244, 241, 231);
-  static const Color appbarColor = Color.fromARGB(255, 179, 111, 83);
-  static const Color navbarColor = Color.fromARGB(255, 108, 63, 46);
+  static const Color scaffoldColor = Color(0xFFF4F1E7);
+  static const Color appbarColor = Color(0xFFB36F53);
+  static const Color navbarColor = Color(0xFF6C3F2E);
 
-  static const Color navbarUnselectedColor = Color.fromARGB(255, 244, 241, 231);
-  static const Color navbarSelectedColor = Color.fromARGB(255, 170, 115, 92);
+  static const Color navbarUnselectedColor = Color(0xFFF4F1E7);
+  static const Color navbarSelectedColor = Color(0xFFAA735C);
 
   static const Color primaryColorLight = appbarColor;
   static const Color primaryColorDark = navbarColor;
@@ -14,18 +14,25 @@ class KColors {
     primaryColorLight,
     primaryColorDark,
   ];
-  static const Color secondaryColorLight = Color.fromARGB(255, 235, 221, 208);
-  static const Color secondaryColorDark = Color.fromARGB(255, 151, 123, 123);
+  static const Color secondaryColorLight = Color(0xFFEBDDD0);
+  static const Color secondaryColorDark = Color(0xFF977B7B);
 
-  static const Color dividerColor = Color.fromARGB(50, 0, 0, 0);
+  static const Color dividerColor = Color(0x30000000);
 
-  static const Color whiteTextColor = Colors.white;
-  static const Color blackTextColor = Color.fromARGB(255, 37, 37, 37);
-  static const Color redTextColor = Color.fromARGB(255, 211, 75, 75);
-  static const Color greenTextColor = Color.fromARGB(255, 95, 178, 79);
+  static const Color whiteTextColor = Color(0xFFFFFFFF);
+  static const Color blackTextColor = Color(0xFF252525);
+  static const Color redTextColor = Color(0xFFD34B4B);
+  static const Color greenTextColor = Color(0xFF5FB24F);
 
-  static const Color redStatusColor = Color.fromARGB(255, 197, 69, 69);
-  static const Color greenStatusColor = Color.fromARGB(255, 109, 177, 96);
+  static const Color redStatusColor = Color(0xFFC54545);
+  static const Color greenStatusColor = Color(0xFF6DB160);
 
-  static const Color greyBgColor = Color.fromARGB(255, 217, 217, 217);
+  static const Color neutralBgColor = Color(0xFFD9D9D9);
+  static const List<Color> BrownBubbles = [
+    Color(0xFF614A41),
+    Color(0xFF9A583E),
+    Color(0xFFD18D73),
+    Color(0xFFAF8A7E),
+    Color(0xFFF4F1E7),
+  ];
 }
