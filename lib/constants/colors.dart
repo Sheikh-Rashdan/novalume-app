@@ -16,6 +16,7 @@ class KColors {
     primaryColorDark,
   ];
   static const Color secondaryColorLight = Color(0xFFEBDDD0);
+  static const Color secondaryColorMedium = Color(0xFFD4C3BD);
   static const Color secondaryColorDark = Color(0xFF977B7B);
 
   static const Color dividerColor = Color(0x30000000);

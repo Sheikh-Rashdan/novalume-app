@@ -11,6 +11,25 @@ class KTextStyles {
   static final TextStyle regular36 = base.copyWith(fontSize: 36);
   static final TextStyle regular40 = base.copyWith(fontSize: 40);
 
+  static final TextStyle extraLight12 = regular12.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+  static final TextStyle extraLight16 = regular16.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+  static final TextStyle extraLight22 = regular22.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+  static final TextStyle extraLight28 = regular28.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+  static final TextStyle extraLight36 = regular36.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+  static final TextStyle extraLight40 = regular40.copyWith(
+    fontWeight: FontWeight.w200,
+  );
+
   static final TextStyle light12 = regular12.copyWith(
     fontWeight: FontWeight.w300,
   );
