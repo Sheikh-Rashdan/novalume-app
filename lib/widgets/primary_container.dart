@@ -16,8 +16,9 @@ class PrimaryContainer extends StatelessWidget {
           end: AlignmentGeometry.bottomCenter,
         ),
         borderRadius: BorderRadiusDirectional.vertical(
-          bottom: Radius.circular(24),
+          bottom: Radius.elliptical(22, 16),
         ),
+        boxShadow: [BoxShadow(offset: Offset(0, -4), blurRadius: 10)],
       ),
       padding: const EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 30),
       child: child,
