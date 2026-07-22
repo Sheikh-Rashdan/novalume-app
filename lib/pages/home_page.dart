@@ -181,10 +181,12 @@ class ApplianceBubbleWidget extends StatelessWidget {
           names: applianceList.map((appliance) => appliance.name).toList(),
           values: applianceList.map((appliance) => appliance.powerKwh).toList(),
           colors: KColors.brownBubbles
+              .map((color) => color.withAlpha(180))
+              .toList()
               .getRange(0, applianceList.length)
               .toList(),
           nameTextStyle: KTextStyles.regular12,
-          showBorder: false,
+          // showBorder: false,
           showValues: false,
           animationDuration: const Duration(seconds: 1),
         ),
