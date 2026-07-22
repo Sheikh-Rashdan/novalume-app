@@ -65,7 +65,7 @@ class ApplianceProvider with ChangeNotifier {
   Future<void> testProviderForBubbleChart() async {
     await Future.delayed(Duration(seconds: 1));
     resetAppliances();
-    List<String> applianceNames = ["A", "B", "C", "D", "E"];
+    List<String> applianceNames = ["Geyser", "Refrigerator", "Air Conditioner", "Cooler", "Washing Machine"];
     loadAppliances(
       List.generate(
         applianceNames.length,
