@@ -3,19 +3,29 @@ import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
+import 'package:novalume_app/widgets/list_option.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
+import 'package:novalume_app/widgets/string_segmented_button.dart';
 
 class MeterPage extends StatefulWidget {
   const MeterPage({super.key});
+
+  final List<String> graphTimePeriodOptions = const ["Day", "Week", "Month"];
 
   @override
   State<MeterPage> createState() => _MeterPageState();
 }
 
 class _MeterPageState extends State<MeterPage> {
-  String _graphTimePeriodString = "day";
+  late String _graphTimePeriodString;
+
+  @override
+  void initState() {
+    _graphTimePeriodString = widget.graphTimePeriodOptions.first;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,34 +74,14 @@ class _MeterPageState extends State<MeterPage> {
         SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SegmentedButton<String>(
-            showSelectedIcon: false,
-            segments: [
-              ButtonSegment(
-                value: "day",
-                label: _graphTimePeriodString == "day"
-                    ? ButtonSegmentSelectedChip(label: "Day")
-                    : Text("Day"),
-              ),
-              ButtonSegment(
-                value: "week",
-                label: _graphTimePeriodString == "week"
-                    ? ButtonSegmentSelectedChip(label: "Week")
-                    : Text("Week"),
-              ),
-              ButtonSegment(
-                value: "month",
-                label: _graphTimePeriodString == "month"
-                    ? ButtonSegmentSelectedChip(label: "Month")
-                    : Text("Month"),
-              ),
-            ],
-            selected: {_graphTimePeriodString},
-            onSelectionChanged: (Set<String> value) {
+          child: StringSegmentedButton(
+            selectedString: _graphTimePeriodString,
+            onSelectionChanged: (String value) {
               setState(() {
-                _graphTimePeriodString = value.first;
+                _graphTimePeriodString = value;
               });
             },
+            options: widget.graphTimePeriodOptions,
           ),
         ),
         SizedBox(height: 10),
@@ -117,83 +107,6 @@ class _MeterPageState extends State<MeterPage> {
             ],
           ),
         ),
-      ],
-    );
-  }
-}
-
-class ButtonSegmentSelectedChip extends StatelessWidget {
-  const ButtonSegmentSelectedChip({super.key, required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: ShapeDecoration(
-        color: KColors.secondaryColorMedium,
-        shape: StadiumBorder(),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-      child: Text(label),
-    );
-  }
-}
-
-class ListOption extends StatelessWidget {
-  const ListOption({
-    super.key,
-    required this.text,
-    required this.iconData,
-    required this.onTap,
-  });
-
-  final String text;
-  final IconData iconData;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                // Icon(iconData, size: 22, color: KColors.blackTextColor),
-                Icon(
-                  iconData,
-                  size: KIconStyles.default22,
-                  color: KColors.blackTextColor,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsetsGeometry.symmetric(
-                      horizontal: 20,
-                      vertical: 6,
-                    ),
-                    child: Text(
-                      text,
-                      style: KTextStyles.medium16.copyWith(
-                        color: KColors.blackTextColor,
-                      ),
-                    ),
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  size: 22,
-                  color: KColors.blackTextColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ],
-            ),
-          ),
-        ),
-        Divider(thickness: 2, color: KColors.dividerColor),
       ],
     );
   }
