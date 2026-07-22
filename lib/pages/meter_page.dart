@@ -1,12 +1,15 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
+import 'package:novalume_app/providers/live_power_provider.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
 import 'package:novalume_app/widgets/list_option.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
 import 'package:novalume_app/widgets/string_segmented_button.dart';
+import 'package:provider/provider.dart';
 
 class MeterPage extends StatefulWidget {
   const MeterPage({super.key});
@@ -64,12 +67,7 @@ class _MeterPageState extends State<MeterPage> {
           ),
         ),
         SizedBox(height: 16),
-        SecondaryContainer(
-          child: Text(
-            "Graph Here",
-            style: KTextStyles.bold28.copyWith(color: KColors.blackTextColor),
-          ),
-        ),
+        SecondaryContainer(child: LivePowerGraph()),
         SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -107,6 +105,85 @@ class _MeterPageState extends State<MeterPage> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class LivePowerGraph extends StatelessWidget {
+  const LivePowerGraph({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    LivePowerProvider livePowerProvider = context.watch<LivePowerProvider>();
+    List<FlSpot> livePowerSpotList = livePowerProvider.livePowerSpotList;
+    return Container(
+      padding: const EdgeInsets.only(right: 30, top: 30),
+      height: 240,
+      child: LineChart(
+        LineChartData(
+          minX: livePowerSpotList.isNotEmpty ? livePowerSpotList.first.x : 0,
+          maxX: livePowerSpotList.isNotEmpty ? livePowerSpotList.last.x : 0,
+          minY: 0,
+          lineBarsData: [
+            LineChartBarData(
+              spots: livePowerSpotList,
+              color: KColors.brownActiveColor,
+              barWidth: 2,
+              isStrokeCapRound: true,
+              dotData: const FlDotData(show: false),
+            ),
+          ],
+          gridData: FlGridData(drawVerticalLine: false),
+          borderData: FlBorderData(
+            border: Border(
+              right: BorderSide.none,
+              top: BorderSide.none,
+              left: BorderSide(
+                color: KColors.brownActiveColor.withAlpha(150),
+                width: 3,
+              ),
+              bottom: BorderSide(
+                color: KColors.brownActiveColor.withAlpha(150),
+                width: 3,
+              ),
+            ),
+          ),
+          lineTouchData: LineTouchData(
+            touchTooltipData: LineTouchTooltipData(
+              getTooltipItems: (List<LineBarSpot> touchedSpots) {
+                return touchedSpots.map((spot) {
+                  return LineTooltipItem(
+                    '${spot.y.toStringAsFixed(2)} kWh',
+                    KTextStyles.medium16,
+                  );
+                }).toList();
+              },
+            ),
+          ),
+          titlesData: FlTitlesData(
+            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            leftTitles: AxisTitles(
+              axisNameSize: 30,
+              axisNameWidget: Text(
+                "Power (kWh)",
+                style: KTextStyles.light12.copyWith(
+                  color: KColors.blackTextColor,
+                ),
+              ),
+            ),
+            bottomTitles: AxisTitles(
+              axisNameSize: 30,
+              axisNameWidget: Text(
+                "Time (ms)",
+                style: KTextStyles.light12.copyWith(
+                  color: KColors.blackTextColor,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
