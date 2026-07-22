@@ -5,12 +5,7 @@ class RecommendationProvider with ChangeNotifier {
   List<Recommendation> _recommendationList = [];
 
   RecommendationProvider() {
-    addRecommendationWithParameters(text: "Turn off the geyser");
-    addRecommendationWithParameters(text: "Switch AC to Eco Mode");
-    addRecommendationWithParameters(text: "Dim bedroom lights at night time");
-    addRecommendationWithParameters(text: "Turn off the geyser");
-    addRecommendationWithParameters(text: "Switch AC to Eco Mode");
-    addRecommendationWithParameters(text: "Dim bedroom lights at night time");
+    // temp
     addRecommendationWithParameters(text: "Turn off the geyser");
     addRecommendationWithParameters(text: "Switch AC to Eco Mode");
     addRecommendationWithParameters(text: "Dim bedroom lights at night time");

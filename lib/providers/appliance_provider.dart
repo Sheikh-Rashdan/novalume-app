@@ -6,6 +6,13 @@ import 'package:novalume_app/models/appliance.dart';
 class ApplianceProvider with ChangeNotifier {
   List<Appliance> _applianceList = [];
 
+  ApplianceProvider() {
+    // temp
+    addApplianceWithParameters(name: "Geyser", powerKwh: 1);
+    addApplianceWithParameters(name: "Air Conditioner", powerKwh: 2);
+    addApplianceWithParameters(name: "Refrigerator", powerKwh: 3);
+  }
+
   List<Appliance> get applianceList => _applianceList;
 
   void addAppliance(Appliance appliance) {
