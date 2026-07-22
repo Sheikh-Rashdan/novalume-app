@@ -31,6 +31,7 @@ class KColors {
 
   static const Color redStatusColor = Color(0xFFC54545);
   static const Color greenStatusColor = Color(0xFF6DB160);
+  static const Color brownActiveColor = Color(0xFF925353);
 
   static const Color neutralBgColor = Color(0xFFD9D9D9);
   static const List<Color> brownBubbles = [
