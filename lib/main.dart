@@ -53,21 +53,61 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      home: Scaffold(
-        bottomNavigationBar: MainBottomNavigationBar(),
-        body: HomePage(),
+      home: WidgetTree(),
+    );
+  }
+}
+
+class WidgetTree extends StatefulWidget {
+  const WidgetTree({super.key});
+
+  final List<Widget> pages = const [
+    HomePage(),
+    MeterPage(),
+    Text("Dashboard"),
+    Text("Profile"),
+  ];
+
+  @override
+  State<WidgetTree> createState() => _WidgetTreeState();
+}
+
+class _WidgetTreeState extends State<WidgetTree> {
+  int _currentPageIndex = 0;
+
+  void _onNavigationBarTap(int index) {
+    setState(() {
+      _currentPageIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: MainBottomNavigationBar(
+        currentIndex: _currentPageIndex,
+        onTap: _onNavigationBarTap,
       ),
+      body: widget.pages[_currentPageIndex],
     );
   }
 }
 
 class MainBottomNavigationBar extends StatelessWidget {
-  const MainBottomNavigationBar({super.key});
+  const MainBottomNavigationBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  final int currentIndex;
+  final ValueChanged<int> onTap;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndex,
+      onTap: onTap,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
         BottomNavigationBarItem(
