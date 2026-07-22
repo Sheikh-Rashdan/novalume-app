@@ -61,7 +61,22 @@ class _MeterPageState extends State<MeterPage> {
           ),
         ),
         SizedBox(height: 20),
-        SecondaryContainer(child: LivePowerGraph()),
+        SecondaryContainer(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  "Live Energy Consumption",
+                  style: KTextStyles.medium16.copyWith(
+                    color: KColors.blackTextColor,
+                  ),
+                ),
+              ),
+              LivePowerGraph(),
+            ],
+          ),
+        ),
         SizedBox(height: 16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
