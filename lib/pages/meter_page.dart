@@ -8,24 +8,18 @@ import 'package:novalume_app/widgets/list_option.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
-import 'package:novalume_app/widgets/string_segmented_button.dart';
 import 'package:provider/provider.dart';
 
 class MeterPage extends StatefulWidget {
   const MeterPage({super.key});
-
-  final List<String> graphTimePeriodOptions = const ["Day", "Week", "Month"];
 
   @override
   State<MeterPage> createState() => _MeterPageState();
 }
 
 class _MeterPageState extends State<MeterPage> {
-  late String _graphTimePeriodString;
-
   @override
   void initState() {
-    _graphTimePeriodString = widget.graphTimePeriodOptions.first;
     super.initState();
   }
 
@@ -66,22 +60,9 @@ class _MeterPageState extends State<MeterPage> {
             ],
           ),
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 20),
         SecondaryContainer(child: LivePowerGraph()),
-        SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: StringSegmentedButton(
-            selectedString: _graphTimePeriodString,
-            onSelectionChanged: (String value) {
-              setState(() {
-                _graphTimePeriodString = value;
-              });
-            },
-            options: widget.graphTimePeriodOptions,
-          ),
-        ),
-        SizedBox(height: 10),
+        SizedBox(height: 16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -127,10 +108,15 @@ class LivePowerGraph extends StatelessWidget {
           lineBarsData: [
             LineChartBarData(
               spots: livePowerSpotList,
+              isCurved: true,
               color: KColors.brownActiveColor,
               barWidth: 2,
               isStrokeCapRound: true,
               dotData: const FlDotData(show: false),
+              belowBarData: BarAreaData(
+                show: true,
+                color: KColors.brownActiveColor.withAlpha(50),
+              ),
             ),
           ],
           gridData: FlGridData(drawVerticalLine: false),
@@ -183,6 +169,7 @@ class LivePowerGraph extends StatelessWidget {
             ),
           ),
         ),
+        duration: Duration.zero,
       ),
     );
   }
