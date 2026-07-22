@@ -7,8 +7,15 @@ import 'package:novalume_app/widgets/primary_container.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
 
-class MeterPage extends StatelessWidget {
+class MeterPage extends StatefulWidget {
   const MeterPage({super.key});
+
+  @override
+  State<MeterPage> createState() => _MeterPageState();
+}
+
+class _MeterPageState extends State<MeterPage> {
+  String _graphTimePeriodString = "day";
 
   @override
   Widget build(BuildContext context) {
@@ -58,27 +65,33 @@ class MeterPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SegmentedButton<String>(
-            onSelectionChanged: (Set<String> value) {},
             showSelectedIcon: false,
             segments: [
               ButtonSegment(
                 value: "day",
-                label: Container(
-                  decoration: ShapeDecoration(
-                    color: KColors.secondaryColorMedium,
-                    shape: StadiumBorder(),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 4,
-                  ),
-                  child: Text("Day"),
-                ),
+                label: _graphTimePeriodString == "day"
+                    ? ButtonSegmentSelectedChip(label: "Day")
+                    : Text("Day"),
               ),
-              ButtonSegment(value: "week", label: Text("Week")),
-              ButtonSegment(value: "month", label: Text("Month")),
+              ButtonSegment(
+                value: "week",
+                label: _graphTimePeriodString == "week"
+                    ? ButtonSegmentSelectedChip(label: "Week")
+                    : Text("Week"),
+              ),
+              ButtonSegment(
+                value: "month",
+                label: _graphTimePeriodString == "month"
+                    ? ButtonSegmentSelectedChip(label: "Month")
+                    : Text("Month"),
+              ),
             ],
-            selected: {"day"},
+            selected: {_graphTimePeriodString},
+            onSelectionChanged: (Set<String> value) {
+              setState(() {
+                _graphTimePeriodString = value.first;
+              });
+            },
           ),
         ),
         SizedBox(height: 10),
@@ -105,6 +118,24 @@ class MeterPage extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ButtonSegmentSelectedChip extends StatelessWidget {
+  const ButtonSegmentSelectedChip({super.key, required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: ShapeDecoration(
+        color: KColors.secondaryColorMedium,
+        shape: StadiumBorder(),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+      child: Text(label),
     );
   }
 }

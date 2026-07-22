@@ -44,6 +44,7 @@ class MainApp extends StatelessWidget {
             selectedBackgroundColor: KColors.secondaryColorLight,
             foregroundColor: KColors.secondaryColorDark,
             selectedForegroundColor: KColors.brownTextColor,
+            splashFactory: NoSplash.splashFactory,
             textStyle: KTextStyles.medium16,
             side: BorderSide.none,
             padding: const EdgeInsets.symmetric(vertical: 12),
