@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:novalume_app/constants/colors.dart';
@@ -55,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             colors: [
               Colors.transparent,
               Colors.transparent,
-              KColors.primaryColorDark,
+              KColors.primaryColorLight,
             ],
             radius: 1.4,
           ).createShader(bounds),
@@ -70,117 +72,126 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Positioned.fill(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 220,
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          child: Text('Sign In', style: KTextStyles.bold36),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 220,
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            child: Text('Sign In', style: KTextStyles.bold36),
+                          ),
                         ),
-                      ),
 
-                      Padding(
-                        padding: const EdgeInsetsGeometry.all(20),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    KColors.secondaryColorLight,
-                                    KColors.secondaryColorMedium,
+                        Padding(
+                          padding: const EdgeInsetsGeometry.all(20),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  backgroundBlendMode: BlendMode.hardLight,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      KColors.secondaryColorLight.withAlpha(
+                                        150,
+                                      ),
+                                      KColors.secondaryColorMedium.withAlpha(
+                                        150,
+                                      ),
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                  borderRadius: BorderRadius.circular(32.0),
+                                  border: Border.all(
+                                    color: KColors.primaryColorDark2,
+                                    width: 1.2,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: KColors.defaultShadowColor,
+                                      blurRadius: 16.0,
+                                      offset: const Offset(0, 5),
+                                    ),
                                   ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
                                 ),
-                                borderRadius: BorderRadius.circular(32.0),
-                                border: Border.all(
-                                  color: KColors.primaryColorDark2,
-                                  width: 1.2,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0,
+                                  vertical: 24.0,
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: KColors.defaultShadowColor,
-                                    blurRadius: 16.0,
-                                    offset: const Offset(0, 5),
-                                  ),
-                                ],
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0,
-                                vertical: 24.0,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  LoginTextField(
-                                    controller: _emailController,
-                                    hintText: 'Enter your Email',
-                                    prefixIcon: Icons.mail_rounded,
-                                    keyboardType: TextInputType.emailAddress,
-                                  ),
-                                  const SizedBox(height: 16.0),
-                                  LoginTextField(
-                                    controller: _passwordController,
-                                    hintText: 'Enter your Password',
-                                    prefixIcon: Icons.lock_rounded,
-                                    isPassword: true,
-                                  ),
-                                  const SizedBox(height: 16.0),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: GestureDetector(
-                                      onTap: onForgotPassword,
-                                      child: Text(
-                                        'Forgot Password?',
-                                        style: KTextStyles.bold16,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    LoginTextField(
+                                      controller: _emailController,
+                                      hintText: 'Enter your Email',
+                                      prefixIcon: Icons.mail_rounded,
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    LoginTextField(
+                                      controller: _passwordController,
+                                      hintText: 'Enter your Password',
+                                      prefixIcon: Icons.lock_rounded,
+                                      isPassword: true,
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: GestureDetector(
+                                        onTap: onForgotPassword,
+                                        child: Text(
+                                          'Forgot Password?',
+                                          style: KTextStyles.bold16,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  Divider(
-                                    color: KColors.dividerColor,
-                                    thickness: 2.0,
-                                    height: 24,
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  LoginPrimaryButton(onPressed: onLogin),
-                                  const SizedBox(height: 24.0),
-                                  VerticalIconLabelButton(
-                                    faIcon: FaIcon(
-                                      FontAwesomeIcons.google,
-                                      size: KIconStyles.default40,
+                                    const SizedBox(height: 8.0),
+                                    Divider(
+                                      color: KColors.dividerColor,
+                                      thickness: 2.0,
+                                      height: 24,
                                     ),
-                                    text: Text(
-                                      "Google",
-                                      style: KTextStyles.bold16,
+                                    const SizedBox(height: 8.0),
+                                    LoginPrimaryButton(onPressed: onLogin),
+                                    const SizedBox(height: 24.0),
+                                    VerticalIconLabelButton(
+                                      faIcon: FaIcon(
+                                        FontAwesomeIcons.google,
+                                        size: KIconStyles.default40,
+                                      ),
+                                      text: Text(
+                                        "Google",
+                                        style: KTextStyles.bold16,
+                                      ),
+                                      onTap: onGoogleLogin,
                                     ),
-                                    onTap: onGoogleLogin,
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                spacing: 16,
+                                children: [
+                                  Text(
+                                    "Don't have an account?",
+                                    style: KTextStyles.bold16,
+                                  ),
+                                  LoginSecondaryButton(
+                                    text: 'Sign Up',
+                                    onPressed: onSignUp,
                                   ),
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              spacing: 16,
-                              children: [
-                                Text(
-                                  "Don't have an account?",
-                                  style: KTextStyles.bold16,
-                                ),
-                                LoginSecondaryButton(
-                                  text: 'Sign Up',
-                                  onPressed: onSignUp,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 100),
-                          ],
+                              SizedBox(height: 100),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

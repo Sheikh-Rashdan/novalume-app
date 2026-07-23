@@ -71,7 +71,7 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      initialRoute: '/main',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => LoginPage(),
         '/main': (context) => const WidgetTree(),
