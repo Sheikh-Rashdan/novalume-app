@@ -25,12 +25,14 @@ class KColors {
 
   static const Color whiteTextColor = Color(0xFFFFFFFF);
   static const Color blackTextColor = Color(0xFF252525);
-  static const Color redTextColor = Color(0xFFD34B4B);
   static const Color greenTextColor = Color(0xFF5FB24F);
+  static const Color yellowTextColor = Color(0xFFD4821E);
+  static const Color redTextColor = Color(0xFFD34B4B);
   static const Color brownTextColor = Color(0xFF6C3F2E);
 
-  static const Color redStatusColor = Color(0xFFC54545);
   static const Color greenStatusColor = Color(0xFF6DB160);
+  static const Color yellowStatusColor = Color(0xFFC9832E);
+  static const Color redStatusColor = Color(0xFFC54545);
   static const Color brownActiveColor = Color(0xFF925353);
 
   static const Color neutralBgColor = Color(0xFFD9D9D9);
