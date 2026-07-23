@@ -90,7 +90,7 @@ class RecommendationListView extends StatelessWidget {
                 shaderCallback: (bounds) => LinearGradient(
                   colors: [
                     KColors.secondaryColorLight,
-                    KColors.secondaryColorDark,
+                    KColors.secondaryColorMedium,
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
