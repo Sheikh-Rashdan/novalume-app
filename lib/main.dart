@@ -5,6 +5,7 @@ import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
 import 'package:novalume_app/pages/login_page.dart';
 import 'package:novalume_app/pages/meter_page.dart';
+import 'package:novalume_app/pages/profile_page.dart';
 import 'package:novalume_app/providers/appliance_provider.dart';
 import 'package:novalume_app/providers/live_power_provider.dart';
 import 'package:novalume_app/providers/recommendation_provider.dart';
@@ -103,7 +104,7 @@ class _WidgetTreeState extends State<WidgetTree> {
       child: MeterPage(),
     ),
     Text("Dashboard"),
-    Text("Profile"),
+    ProfilePage(),
   ];
 
   void _onNavigationBarTap(int index) {
