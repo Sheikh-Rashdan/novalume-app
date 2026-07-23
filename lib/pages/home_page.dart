@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ApplianceProvider>().testProviderForBubbleChart();
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
