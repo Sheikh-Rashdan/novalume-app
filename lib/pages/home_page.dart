@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // MARK: temporary for testing
         title: GestureDetector(
           onTap: context
               .read<RecommendationProvider>()
