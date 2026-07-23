@@ -37,6 +37,8 @@ class MainApp extends StatelessWidget {
           bodyColor: KColors.whiteTextColor,
           displayColor: KColors.whiteTextColor,
         ),
+        iconTheme: IconThemeData(color: KColors.whiteTextColor),
+        primaryIconTheme: IconThemeData(color: KColors.whiteTextColor),
         scaffoldBackgroundColor: KColors.scaffoldColor,
         appBarTheme: AppBarTheme(
           backgroundColor: KColors.appbarColor,
