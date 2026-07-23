@@ -83,7 +83,6 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsetsGeometry.all(20),
                         child: Column(
                           children: [
-                            // Form card
                             Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -170,23 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                                   "Don't have an account?",
                                   style: KTextStyles.bold16,
                                 ),
-                                ElevatedButton(
+                                LoginSecondaryButton(
+                                  text: 'Sign Up',
                                   onPressed: onSignUp,
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: KColors.secondaryColorDark,
-                                    foregroundColor: KColors.whiteTextColor,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0,
-                                      vertical: 12.0,
-                                    ),
-                                  ),
-                                  child: Text(
-                                    'Sign Up',
-                                    style: KTextStyles.bold16,
-                                  ),
                                 ),
                               ],
                             ),
@@ -202,6 +187,31 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class LoginSecondaryButton extends StatelessWidget {
+  const LoginSecondaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+
+  final String text;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: KColors.secondaryColorDark,
+        foregroundColor: KColors.whiteTextColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      ),
+      child: Text(text, style: KTextStyles.bold16),
     );
   }
 }
