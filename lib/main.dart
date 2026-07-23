@@ -68,19 +68,10 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      initialRoute: '/login',
+      initialRoute: '/main',
       routes: {
         '/login': (context) => LoginPage(),
-        '/main': (context) => MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (context) => ApplianceProvider()),
-            ChangeNotifierProvider(
-              create: (context) => RecommendationProvider(),
-            ),
-            ChangeNotifierProvider(create: (context) => LivePowerProvider()),
-          ],
-          child: const WidgetTree(),
-        ),
+        '/main': (context) => const WidgetTree(),
       },
     );
   }
@@ -89,19 +80,29 @@ class MainApp extends StatelessWidget {
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});
 
-  final List<Widget> pages = const [
-    HomePage(),
-    MeterPage(),
-    Text("Dashboard"),
-    Text("Profile"),
-  ];
-
   @override
   State<WidgetTree> createState() => _WidgetTreeState();
 }
 
 class _WidgetTreeState extends State<WidgetTree> {
   int _currentPageIndex = 0;
+  late final List<Widget> _pages = [
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ApplianceProvider()),
+        ChangeNotifierProvider(create: (context) => RecommendationProvider()),
+      ],
+      child: HomePage(),
+    ),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LivePowerProvider()),
+      ],
+      child: MeterPage(),
+    ),
+    Text("Dashboard"),
+    Text("Profile"),
+  ];
 
   void _onNavigationBarTap(int index) {
     setState(() {
@@ -116,7 +117,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         currentIndex: _currentPageIndex,
         onTap: _onNavigationBarTap,
       ),
-      body: widget.pages[_currentPageIndex],
+      body: IndexedStack(index: _currentPageIndex, children: _pages),
     );
   }
 }
