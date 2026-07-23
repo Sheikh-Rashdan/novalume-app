@@ -6,13 +6,6 @@ import 'package:novalume_app/models/recommendation.dart';
 class RecommendationProvider with ChangeNotifier {
   List<Recommendation> _recommendationList = [];
 
-  RecommendationProvider() {
-    // temp
-    addRecommendationWithParameters(text: "Turn off the geyser");
-    addRecommendationWithParameters(text: "Switch AC to Eco Mode");
-    addRecommendationWithParameters(text: "Dim bedroom lights at night time");
-  }
-
   List<Recommendation> get recommendationList => _recommendationList;
 
   void addRecommendation(Recommendation recommendation) {
