@@ -45,8 +45,11 @@ class KColors {
     Color(0xFF614A41),
   ];
 
+  static const Color pinkLight = Color(0xFFFFA2BC);
+  static const Color pinkDark = Color(0xFFE95978);
+  static const Color orangeLight = Color(0xFFD8815D);
+  static const Color orangeDark = Color(0xFF9D411E);
+  static const List<Color> savingsBannerGradient = [orangeLight, orangeDark];
+
   //temp
-  static const Color solarColor = Color(0xFFFFB3C1);
-  static const Color mainsColor = Color(0xFFE8345A);
-  static const Color profileSolarColor = Color(0xFFFAD07A);
 }
