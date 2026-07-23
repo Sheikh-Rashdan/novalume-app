@@ -67,7 +67,7 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      home: WidgetTree(),
+      home: LoginPage(),
     );
   }
 }
