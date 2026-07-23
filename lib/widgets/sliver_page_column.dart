@@ -5,10 +5,12 @@ class SliverPageColumn extends StatelessWidget {
     super.key,
     required this.appBartitle,
     required this.children,
+    this.actions = const [],
   });
 
   final String appBartitle;
   final List<Widget> children;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class SliverPageColumn extends StatelessWidget {
         SliverAppBar(
           title: Text(appBartitle),
           centerTitle: true,
-          actions: [],
+          actions: actions,
           actionsPadding: const EdgeInsets.symmetric(
             horizontal: 10,
             vertical: 10,
