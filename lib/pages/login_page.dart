@@ -22,6 +22,22 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  void onForgotPassword() {
+    throw UnimplementedError("Forgot Password Page");
+  }
+
+  void onLogin() {
+    throw UnimplementedError("Confirm Login");
+  }
+
+  void onGoogleLogin() {
+    throw UnimplementedError("Confirm Google Login");
+  }
+
+  void onSignUp() {
+    throw UnimplementedError("Sign up Page");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -115,11 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Align(
                                     alignment: Alignment.centerRight,
                                     child: GestureDetector(
-                                      onTap: () {
-                                        throw UnimplementedError(
-                                          "Forgot Password Page",
-                                        );
-                                      },
+                                      onTap: onForgotPassword,
                                       child: Text(
                                         'Forgot Password?',
                                         style: KTextStyles.bold16,
@@ -133,13 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                                     height: 24,
                                   ),
                                   const SizedBox(height: 8.0),
-                                  LoginPrimaryButton(
-                                    onPressed: () {
-                                      throw UnimplementedError(
-                                        "Login function",
-                                      );
-                                    },
-                                  ),
+                                  LoginPrimaryButton(onPressed: onLogin),
                                   const SizedBox(height: 24.0),
                                   VerticalIconLabelButton(
                                     faIcon: FaIcon(
@@ -150,11 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                                       "Google",
                                       style: KTextStyles.bold16,
                                     ),
-                                    onTap: () {
-                                      throw UnimplementedError(
-                                        "Google sign in",
-                                      );
-                                    },
+                                    onTap: onGoogleLogin,
                                   ),
                                 ],
                               ),
@@ -169,11 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                                   style: KTextStyles.bold16,
                                 ),
                                 ElevatedButton(
-                                  onPressed: () {
-                                    throw UnimplementedError(
-                                      "sign in funciton",
-                                    );
-                                  },
+                                  onPressed: onSignUp,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: KColors.secondaryColorDark,
                                     foregroundColor: KColors.whiteTextColor,
