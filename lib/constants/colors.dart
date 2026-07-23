@@ -44,4 +44,9 @@ class KColors {
     Color(0xFF9A583E),
     Color(0xFF614A41),
   ];
+
+  //temp
+  static const Color solarColor = Color(0xFFFFB3C1);
+  static const Color mainsColor = Color(0xFFE8345A);
+  static const Color profileSolarColor = Color(0xFFFAD07A);
 }
