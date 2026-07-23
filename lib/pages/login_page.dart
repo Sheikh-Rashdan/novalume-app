@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
+import 'package:novalume_app/widgets/vertical_icon_label_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -235,40 +236,6 @@ class LoginPrimaryButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsetsGeometry.symmetric(vertical: 10),
           child: Text('LOGIN', style: KTextStyles.bold22),
-        ),
-      ),
-    );
-  }
-}
-
-class VerticalIconLabelButton extends StatelessWidget {
-  const VerticalIconLabelButton({
-    super.key,
-    this.icon,
-    this.faIcon,
-    required this.text,
-    required this.onTap,
-    this.spacing = 8,
-  }) : assert(icon != null || faIcon != null);
-
-  final Icon? icon;
-  final FaIcon? faIcon;
-  final Widget text;
-  final VoidCallback onTap;
-  final double spacing;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            icon == null ? faIcon! : icon!,
-            SizedBox(height: spacing),
-            text,
-          ],
         ),
       ),
     );
