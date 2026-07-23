@@ -98,10 +98,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_bubble_chart_plus
-      sha256: "9886cc451be80e1d7a5ba3739519e662c30bf6a836e233451c2cd8564f2addfd"
+      sha256: b64faf81971d3e21c9924cc6f8df8c1ca22478ba052de68f9507a966cb3507df
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.7"
   flutter_lints:
     dependency: "direct dev"
     description:

@@ -7,10 +7,7 @@ class ApplianceProvider with ChangeNotifier {
   List<Appliance> _applianceList = [];
 
   ApplianceProvider() {
-    // temp
-    addApplianceWithParameters(name: "Geyser", powerKwh: 1);
-    addApplianceWithParameters(name: "Air Conditioner", powerKwh: 2);
-    addApplianceWithParameters(name: "Refrigerator", powerKwh: 3);
+    testProviderForBubbleChart();
   }
 
   List<Appliance> get applianceList => _applianceList;
@@ -65,7 +62,13 @@ class ApplianceProvider with ChangeNotifier {
   Future<void> testProviderForBubbleChart() async {
     await Future.delayed(Duration(seconds: 1));
     resetAppliances();
-    List<String> applianceNames = ["Geyser", "Refrigerator", "Air Conditioner", "Cooler", "Washing Machine"];
+    List<String> applianceNames = [
+      "Geyser",
+      "Refrigerator",
+      "Air Conditioner",
+      "Cooler",
+      "Washing Machine",
+    ];
     loadAppliances(
       List.generate(
         applianceNames.length,
