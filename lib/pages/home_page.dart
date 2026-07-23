@@ -190,7 +190,6 @@ class ApplianceBubbleWidget extends StatelessWidget {
               .getRange(0, applianceList.length)
               .toList(),
           nameTextStyle: KTextStyles.regular12,
-          // showBorder: false,
           showValues: false,
           animationDuration: const Duration(seconds: 1),
         ),

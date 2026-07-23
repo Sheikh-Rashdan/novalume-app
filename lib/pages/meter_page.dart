@@ -5,7 +5,7 @@ import 'package:novalume_app/constants/meter.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/providers/live_power_provider.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
-import 'package:novalume_app/widgets/list_option.dart';
+import 'package:novalume_app/widgets/list_option_builder.dart';
 import 'package:novalume_app/widgets/primary_container.dart';
 import 'package:novalume_app/widgets/secondary_container.dart';
 import 'package:novalume_app/widgets/sliver_page_column.dart';
@@ -88,27 +88,14 @@ class _MeterPageState extends State<MeterPage> {
           ),
         ),
         SizedBox(height: 16),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              ListOption(
-                text: "Energy",
-                iconData: Icons.energy_savings_leaf_rounded,
-                onTap: () {},
-              ),
-              ListOption(
-                text: "Savings",
-                iconData: Icons.currency_rupee_rounded,
-                onTap: () {},
-              ),
-              ListOption(
-                text: "Predictions",
-                iconData: Icons.auto_graph_rounded,
-                onTap: () {},
-              ),
-            ],
-          ),
+        ListOptionBuilder(
+          labels: ["Energy", "Savings", "Predictions"],
+          iconDatas: [
+            Icons.energy_savings_leaf_rounded,
+            Icons.currency_rupee_rounded,
+            Icons.auto_graph_rounded,
+          ],
+          onTaps: [() {}, () {}, () {}],
         ),
       ],
     );

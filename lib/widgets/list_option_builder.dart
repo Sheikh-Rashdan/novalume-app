@@ -3,15 +3,49 @@ import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 
+class ListOptionBuilder extends StatelessWidget {
+  const ListOptionBuilder({
+    super.key,
+    required this.labels,
+    required this.iconDatas,
+    required this.onTaps,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20),
+  }) : assert(
+         labels.length == iconDatas.length && labels.length == onTaps.length,
+       );
+
+  final List<String> labels;
+  final List<IconData> iconDatas;
+  final List<VoidCallback> onTaps;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: Column(
+        children: List.generate(
+          labels.length,
+          (index) => ListOption(
+            label: labels[index],
+            iconData: iconDatas[index],
+            onTap: onTaps[index],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class ListOption extends StatelessWidget {
   const ListOption({
     super.key,
-    required this.text,
+    required this.label,
     required this.iconData,
     required this.onTap,
   });
 
-  final String text;
+  final String label;
   final IconData iconData;
   final VoidCallback onTap;
 
@@ -26,7 +60,6 @@ class ListOption extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                // Icon(iconData, size: 22, color: KColors.blackTextColor),
                 Icon(
                   iconData,
                   size: KIconStyles.default22,
@@ -39,7 +72,7 @@ class ListOption extends StatelessWidget {
                       vertical: 6,
                     ),
                     child: Text(
-                      text,
+                      label,
                       style: KTextStyles.medium16.copyWith(
                         color: KColors.blackTextColor,
                       ),

@@ -50,6 +50,4 @@ class KColors {
   static const Color orangeLight = Color(0xFFD8815D);
   static const Color orangeDark = Color(0xFF9D411E);
   static const List<Color> savingsBannerGradient = [orangeLight, orangeDark];
-
-  //temp
 }
