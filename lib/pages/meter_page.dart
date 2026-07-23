@@ -191,7 +191,7 @@ class LivePowerGraph extends StatelessWidget {
             bottomTitles: AxisTitles(
               axisNameSize: 30,
               axisNameWidget: Text(
-                "Time (ms)",
+                "Time (s)",
                 style: KTextStyles.light12.copyWith(
                   color: KColors.blackTextColor,
                 ),
