@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onLogin() {
-    throw UnimplementedError("Confirm Login");
+    Navigator.of(context).pushReplacementNamed('/main');
   }
 
   void onGoogleLogin() {

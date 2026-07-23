@@ -19,16 +19,7 @@ Future<void> main() async {
   ]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => ApplianceProvider()),
-        ChangeNotifierProvider(create: (context) => RecommendationProvider()),
-        ChangeNotifierProvider(create: (context) => LivePowerProvider()),
-      ],
-      child: const MainApp(),
-    ),
-  );
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -77,7 +68,20 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      home: LoginPage(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/main': (context) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => ApplianceProvider()),
+            ChangeNotifierProvider(
+              create: (context) => RecommendationProvider(),
+            ),
+            ChangeNotifierProvider(create: (context) => LivePowerProvider()),
+          ],
+          child: const WidgetTree(),
+        ),
+      },
     );
   }
 }
