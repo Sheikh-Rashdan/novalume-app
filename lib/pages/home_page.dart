@@ -18,7 +18,12 @@ class HomePage extends StatelessWidget {
     context.read<ApplianceProvider>().testProviderForBubbleChart();
     return Scaffold(
       appBar: AppBar(
-        title: NovalumeAppBarTitle(),
+        title: GestureDetector(
+          onTap: context
+              .read<RecommendationProvider>()
+              .testAddRandomRecommendation,
+          child: NovalumeAppBarTitle(),
+        ),
         centerTitle: false,
         actions: [
           IconButton(
