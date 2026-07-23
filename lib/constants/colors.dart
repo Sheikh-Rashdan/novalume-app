@@ -11,6 +11,7 @@ class KColors {
 
   static const Color primaryColorLight = appbarColor;
   static const Color primaryColorDark = navbarColor;
+  static const Color primaryColorDark2 = Color(0xFF3E1F1A);
   static const List<Color> primaryContainerGradient = [
     primaryColorLight,
     primaryColorDark,

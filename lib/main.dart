@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:novalume_app/constants/colors.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
+import 'package:novalume_app/pages/login_page.dart';
 import 'package:novalume_app/pages/meter_page.dart';
 import 'package:novalume_app/providers/appliance_provider.dart';
 import 'package:novalume_app/providers/live_power_provider.dart';
 import 'package:novalume_app/providers/recommendation_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
   runApp(
     MultiProvider(
       providers: [
@@ -67,7 +77,7 @@ class MainApp extends StatelessWidget {
           style: IconButton.styleFrom(foregroundColor: KColors.whiteTextColor),
         ),
       ),
-      home: WidgetTree(),
+      home: LoginPage(),
     );
   }
 }
