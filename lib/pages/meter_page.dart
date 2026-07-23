@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/meter.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/providers/live_power_provider.dart';
 import 'package:novalume_app/widgets/colored_progress_indicator.dart';
@@ -28,37 +29,46 @@ class _MeterPageState extends State<MeterPage> {
     return SliverPageColumn(
       appBartitle: "Meter",
       children: [
-        PrimaryContainer(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Current Usage", style: KTextStyles.light28),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.alphabetic,
+        Consumer<LivePowerProvider>(
+          builder: (context, livePowerProvider, child) {
+            return PrimaryContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("30 KwH", style: KTextStyles.regular40),
-                  Text(
-                    "Low Load",
-                    style: KTextStyles.regular22.copyWith(
-                      color: KColors.greenTextColor,
-                    ),
+                  Text("Current Usage", style: KTextStyles.light28),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        "${livePowerProvider.currentPowerValueString} kWh",
+                        style: KTextStyles.regular40,
+                      ),
+                      Text(
+                        "${livePowerProvider.currentPowerStrainString} Load",
+                        style: KTextStyles.regular22.copyWith(
+                          color: livePowerProvider.currentPowerStrainColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  ColoredProgressIndicator(
+                    fraction:
+                        livePowerProvider.currentPowerValue /
+                        KMeter.maximumPowerValue,
+                    colors: [
+                      KColors.greenStatusColor,
+                      KColors.yellowStatusColor,
+                      KColors.redStatusColor,
+                    ],
+                    stops: KMeter.powerStrainStops,
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-              ColoredProgressIndicator(
-                fraction: 0.3,
-                colors: [
-                  KColors.greenStatusColor,
-                  Colors.orange,
-                  KColors.redStatusColor,
-                ],
-                stops: [0.4, 0.7],
-              ),
-            ],
-          ),
+            );
+          },
         ),
         SizedBox(height: 20),
         SecondaryContainer(
