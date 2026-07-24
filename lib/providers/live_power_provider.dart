@@ -15,6 +15,9 @@ class LivePowerProvider with ChangeNotifier {
 
   List<FlSpot> get livePowerSpotList =>
       _livePowerList.map((livePower) => livePower.toFlSpot()).toList();
+  double get spotListpeakY => livePowerSpotList.isEmpty
+      ? 0
+      : livePowerSpotList.reduce((a, b) => a.y > b.y ? a : b).y;
   double get currentPowerValue =>
       _livePowerList.isNotEmpty ? _livePowerList.last.powerKwh : 0;
   String get currentPowerValueString => currentPowerValue.toStringAsFixed(1);

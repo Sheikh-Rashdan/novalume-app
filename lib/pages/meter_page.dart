@@ -109,9 +109,6 @@ class LivePowerGraph extends StatelessWidget {
   Widget build(BuildContext context) {
     LivePowerProvider livePowerProvider = context.watch<LivePowerProvider>();
     List<FlSpot> livePowerSpotList = livePowerProvider.livePowerSpotList;
-    final double peakY = livePowerSpotList.isEmpty
-        ? 0
-        : livePowerSpotList.reduce((a, b) => a.y > b.y ? a : b).y;
     return Container(
       padding: const EdgeInsets.only(right: 30, top: 30),
       height: 240,
@@ -120,7 +117,7 @@ class LivePowerGraph extends StatelessWidget {
           minX: livePowerSpotList.isNotEmpty ? livePowerSpotList.first.x : 0,
           maxX: livePowerSpotList.isNotEmpty ? livePowerSpotList.last.x : 0,
           minY: 0,
-          maxY: peakY * 1.1,
+          maxY: livePowerProvider.spotListpeakY * 1.1,
           lineBarsData: [
             LineChartBarData(
               spots: livePowerSpotList,
