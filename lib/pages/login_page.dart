@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
               Colors.transparent,
               KColors.primaryColorLight,
             ],
-            radius: 1.4,
+            radius: 1.6,
           ).createShader(bounds),
           blendMode: BlendMode.multiply,
           child: Stack(
