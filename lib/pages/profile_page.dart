@@ -60,7 +60,12 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               ListOptionBuilder(
-                labels: ["Personal Info", "Devices", "Cost Goal", "Comparison"],
+                labels: [
+                  "Personal Info",
+                  "Appliances",
+                  "Cost Goal",
+                  "Comparison",
+                ],
                 iconDatas: [
                   Icons.info_rounded,
                   Icons.perm_device_info_rounded,
