@@ -76,7 +76,7 @@ class LivePowerProvider with ChangeNotifier {
   }
 
   Future<void> testProviderForLivePowerGraphAddSpots() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: KMeter.fetchSeconds));
     addLivePowerWithParameters(
       timeMs: _livePowerList.isNotEmpty ? (_livePowerList.last.timeMs + 1) : 0,
       powerKwh: (3 + Random().nextInt(15) + Random().nextDouble()),
