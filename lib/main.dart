@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/pages/home_page.dart';
 import 'package:novalume_app/pages/login_page.dart';
@@ -52,7 +53,7 @@ class MainApp extends StatelessWidget {
           selectedItemColor: KColors.navbarUnselectedColor,
           unselectedItemColor: KColors.navbarSelectedColor,
           selectedLabelStyle: KTextStyles.medium12,
-          selectedIconTheme: IconThemeData(size: 28),
+          selectedIconTheme: IconThemeData(size: KIconStyles.default28),
           showUnselectedLabels: true,
         ),
         segmentedButtonTheme: SegmentedButtonThemeData(
@@ -135,25 +136,30 @@ class MainBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
+  BottomNavigationBarItem _bottomNavigationBarItemMaker(
+    IconData iconData,
+    String label,
+  ) {
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: const EdgeInsetsGeometry.only(top: 6),
+        child: Icon(iconData),
+      ),
+      activeIcon: Icon(iconData),
+      label: label,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.bar_chart_rounded),
-          label: "Meter",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard_rounded),
-          label: "Dashboard",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_rounded),
-          label: "Profile",
-        ),
+        _bottomNavigationBarItemMaker(Icons.home_rounded, "Home"),
+        _bottomNavigationBarItemMaker(Icons.bar_chart_rounded, "Meter"),
+        _bottomNavigationBarItemMaker(Icons.dashboard_rounded, "Dashboard"),
+        _bottomNavigationBarItemMaker(Icons.person_rounded, "Profile"),
       ],
     );
   }
