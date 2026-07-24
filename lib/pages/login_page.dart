@@ -46,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
     return Theme(
       data: Theme.of(context).copyWith(
         textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: KColors.blackTextColor,
-          displayColor: KColors.blackTextColor,
+          bodyColor: KColors.primaryColorDark2,
+          displayColor: KColors.primaryColorDark2,
         ),
       ),
       child: Scaffold(
@@ -161,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                                       faIcon: FaIcon(
                                         FontAwesomeIcons.google,
                                         size: KIconStyles.default40,
+                                        color: KColors.primaryColorDark2,
                                       ),
                                       text: Text(
                                         "Google",
@@ -297,7 +298,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
       obscureText: widget.isPassword ? _obscureText : false,
       keyboardType: widget.keyboardType,
       style: KTextStyles.regular16,
-      cursorColor: KColors.blackTextColor,
+      cursorColor: KColors.primaryColorDark2,
       decoration: InputDecoration(
         hintText: widget.showLabel ? null : widget.hintText,
         labelText: widget.showLabel ? widget.hintText : null,
@@ -305,7 +306,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
         labelStyle: KTextStyles.medium16,
         prefixIcon: Icon(
           widget.prefixIcon,
-          color: KColors.blackTextColor,
+          color: KColors.primaryColorDark2,
           size: KIconStyles.default22,
         ),
         suffixIcon: widget.isPassword
@@ -314,7 +315,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   _obscureText
                       ? Icons.visibility_off_rounded
                       : Icons.visibility_rounded,
-                  color: KColors.blackTextColor,
+                  color: KColors.primaryColorDark2,
                   size: KIconStyles.default22,
                 ),
                 onPressed: _toggleObscure,
