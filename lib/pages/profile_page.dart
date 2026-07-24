@@ -37,13 +37,13 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         LabelledValue(
                           label: 'Mains',
-                          amount: '₹ 1280/5000',
+                          amount: '₹ 1280 / 5000',
                           color: KColors.pinkDark,
                         ),
                         const SizedBox(width: 60),
                         LabelledValue(
                           label: 'Solar',
-                          amount: '₹ 3000/5000',
+                          amount: '₹ 3000 / 5000',
                           color: KColors.pinkLight,
                         ),
                       ],
