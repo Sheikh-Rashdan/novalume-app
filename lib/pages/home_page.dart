@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bubble_chart_plus/flutter_bubble_chart_plus.dart';
 import 'package:novalume_app/constants/colors.dart';
+import 'package:novalume_app/constants/icon_styles.dart';
 import 'package:novalume_app/constants/text_styles.dart';
 import 'package:novalume_app/models/appliance.dart';
 import 'package:novalume_app/models/recommendation.dart';
@@ -182,17 +183,30 @@ class ApplianceBubbleWidget extends StatelessWidget {
       child: SecondaryContainer(
         padding: EdgeInsets.zero,
         margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 5),
-        child: BubbleChart(
-          names: applianceList.map((appliance) => appliance.name).toList(),
-          values: applianceList.map((appliance) => appliance.powerKwh).toList(),
-          colors: KColors.brownBubbles
-              .map((color) => color.withAlpha(180))
-              .toList()
-              .getRange(0, applianceList.length)
-              .toList(),
-          nameTextStyle: KTextStyles.regular12,
-          showValues: false,
-          animationDuration: const Duration(seconds: 1),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Icon(
+                Icons.lightbulb_rounded,
+                size: KIconStyles.default200,
+                color: KColors.secondaryColorMedium,
+              ),
+            ),
+            BubbleChart(
+              names: applianceList.map((appliance) => appliance.name).toList(),
+              values: applianceList
+                  .map((appliance) => appliance.powerKwh)
+                  .toList(),
+              colors: KColors.brownBubbles
+                  .map((color) => color.withAlpha(180))
+                  .toList()
+                  .getRange(0, applianceList.length)
+                  .toList(),
+              nameTextStyle: KTextStyles.regular12,
+              showValues: false,
+              animationDuration: const Duration(seconds: 1),
+            ),
+          ],
         ),
       ),
     );

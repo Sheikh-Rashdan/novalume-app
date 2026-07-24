@@ -5,4 +5,5 @@ class KIconStyles {
   static const double default28 = 28;
   static const double default36 = 36;
   static const double default40 = 40;
+  static const double default200 = 200;
 }
