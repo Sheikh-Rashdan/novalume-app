@@ -110,9 +110,8 @@ class LivePowerGraph extends StatelessWidget {
     LivePowerProvider livePowerProvider = context.watch<LivePowerProvider>();
     List<FlSpot> livePowerSpotList = livePowerProvider.livePowerSpotList;
     final double peakY = livePowerSpotList
-        .map((spot) => spot.y)
-        .toList()
-        .fold<double>(0, (a, b) => a > b ? a : b);
+        .reduce((a, b) => a.y > b.y ? a : b)
+        .y;
     return Container(
       padding: const EdgeInsets.only(right: 30, top: 30),
       height: 240,
